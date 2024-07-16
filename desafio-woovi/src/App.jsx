@@ -42,28 +42,32 @@ function App() {
       <div className="text-left">
         <div className="mb-5 mt-6">
           <div className="flex items-center font-bold text-lg">
-            <span className="absolute bg-green-600 text-white py-1 px-3 rounded-full text-sm ml-2">Pix</span>
+            <span className="absolute bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm ml-2">Pix</span>
           </div>
           <label className="flex items-center p-3 border border-gray-200 rounded-lg mb-2 cursor-pointer hover:border-emerald-400 transition duration-300">
-            <div className='flex flex-col'>
-              
-            {`1x ${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
-            <span className="text-gray-500">Total R${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+            <div className="flex flex-col">
+              {`1x ${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+              <span className="text-emerald-400">Ganhe <span className="font-extrabold">3%</span> de Cashback</span>
+              <div className="relative flex items-center bg-customblue text-white w-full pr-14">
+                <div className="font-semibold mr-1">🤑 R$ 300,00</div>
+                <div>de volta no seu Pix na hora</div>
+                <div className="absolute left-full base-2 h-5 w-5 bg-white transform rotate-45 -translate-x-0"></div>
+              </div>
             </div>
-         
             <input
               type="radio"
               name="paymentOption"
               value="1x"
               checked={selectedOption === '1x'}
               onChange={handleOptionChange}
-              />
+            />
           </label>
+
           
         </div>
         <div className="border border-gray-200 rounded-lg">
           <div className="flex items-center mb-2 font-bold text-lg">
-            <span className="absolute bg-green-600 text-white py-1 px-3 rounded-full text-sm ml-2">Pix Parcelado</span>
+            <span className="absolute bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm ml-2">Pix Parcelado</span>
           </div>
           {paymentOptions.map(option => (
             <label key={option.label} className="flex items-center p-3 border-b border-gray-200 mb-2 cursor-pointer hover:border-emerald-400 transition duration-300">
