@@ -40,7 +40,7 @@ function PixPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-5 border border-gray-200 rounded-lg text-center">
+    <div className="max-w-md mx-auto p-5  border-gray-200 rounded-lg text-center">
       <img src={logo} alt="Logo" className="mx-auto mb-5" />
       {paymentOption === '1x' ? (
         <h1 className="text-xl font-extrabold text-gray-700">

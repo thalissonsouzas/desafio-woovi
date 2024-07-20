@@ -49,24 +49,24 @@ function App() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-5 border border-gray-200 rounded-lg text-center">
+    <div className="border-gray-200 rounded-lg text-center p-4">
       <img src={logo} alt="Logo" className="mx-auto mb-5" />
       <h1 className="text-xl font-extrabold text-gray-700">
         {mockData.userName}, como você quer pagar?
       </h1>
       <div className="text-left">
         <div className="mb-5 mt-6">
-          <div className="flex items-center font-bold text-lg">
-            <span className="absolute bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm ml-2">Pix</span>
+          <div className="flex items-center font-bold text-lg relative">
+            <span className="absolute bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-xs ml-2">Pix</span>
           </div>
           <label className="flex items-center p-3 border border-gray-200 rounded-lg mb-2 cursor-pointer hover:border-emerald-400 transition duration-300">
             <div className="flex flex-col">
               {`1x ${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
               <span className="text-emerald-400">Ganhe <span className="font-extrabold">3%</span> de Cashback</span>
-              <div className="relative flex items-center bg-customblue text-white w-full pl-2 pr-14">
+              <div className="relative flex items-center bg-customblue text-sm text-white w-full pl-2 pr-6 whitespace-nowrap">
                 <div className="font-semibold mr-1">🤑 R$ 300,00</div>
-                <div>de volta no seu Pix na hora</div>
-                <div className="absolute left-full base-2 h-5 w-5 bg-white transform rotate-45 -translate-x-0"></div>
+                <div className="text-xs sm:text-sm md:text-base">de volta no seu Pix na hora</div>
+                {/* <div className="absolute left-full top-1/2 transform -translate-y-1/2 bg-white h-5 w-5 rotate-45"></div> */}
               </div>
             </div>
             <input
@@ -79,7 +79,7 @@ function App() {
           </label>
         </div>
         <div className="border border-gray-200 rounded-lg">
-          <div className="flex items-center font-bold text-lg">
+          <div className="flex items-center font-bold text-lg relative">
             <span className="absolute bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm ml-2">Pix Parcelado</span>
           </div>
           {paymentOptions.filter(option => option.label !== '1x').map((option, index) => (
@@ -93,12 +93,12 @@ function App() {
             >
               <div className='flex flex-col'>
                 {`${option.label} ${calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).installment} `}
-                <span className="text-gray-500">Total {calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).total}</span>
+                <span className="text-gray-500 text-sm">Total {calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).total}</span>
                 {option.label === '4x' && (
-                  <div className="relative flex items-center bg-customblue text-white w-full pl-2 pr-8 mt-2 whitespace-nowrap">
-                    <div className="font-semibold mr-1">3% de juros:</div>
-                    <div>Melhor opção de parcelamento</div>
-                    <div className="absolute left-full base-2 h-5 w-5 bg-white transform rotate-45 -translate-x-0"></div>
+                  <div className="relative flex items-center bg-customblue text-white w-full pl-2 pr-2 mt-2 whitespace-nowrap">
+                    <div className="font-semibold mr-1 text-xs sm:text-sm md:text-base">3% de juros:</div>
+                    <div className="text-xs sm:text-sm md:text-base">Melhor opção de parcelamento</div>
+                    {/* <div className="absolute left-full top-1/2 transform -translate-y-1/2 bg-white h-5 w-5 rotate-45"></div> */}
                   </div>
                 )}
               </div>
@@ -121,7 +121,6 @@ function App() {
             </button>
           </Link>
         </div>
-
       </div>
       <Footer />
     </div>
