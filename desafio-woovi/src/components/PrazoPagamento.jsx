@@ -1,3 +1,5 @@
+import Timer from './Timer';
+
 function PrazoPagamento() {
     // Função para formatar a data e hora
     const formatDateTime = (date) => {
@@ -21,8 +23,9 @@ function PrazoPagamento() {
   
     return (
       <div className="text-center font-nunito text-softgray p-4">
-        <p className="text-base leading-[21.82px] ">Prazo de pagamento</p>
-        <h3 className="text-base leading-[21.82px] text-gray-700 font-bold">{formatDateTime(deadline)}</h3>
+        <p className="text-base">Prazo de pagamento</p>
+        <h3 className="text-base text-gray-700 font-bold">{formatDateTime(deadline)}</h3>
+        <Timer />
       </div>
     );
   }
