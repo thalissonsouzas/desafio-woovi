@@ -4,6 +4,13 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v2.2.19-06B6D4)
 
 ## 📋 Sobre
+Este projeto fez parte do processo seletivo para vaga de Dev Jr para empresa Woovi.
+
+https://woovi.com/jobs/challenges/frontend-engineer/
+
+Eu subi o projeto no surge.sh.  
+Veja como ele ficou antes que ele saia do ar :  
+https://desafio-woovi-pixpayment.surge.sh/
 
 # Pix Payment
 
@@ -66,6 +73,8 @@ O projeto é composto pelas seguintes páginas e componentes:
     ```sh
     npm run dev
     ```
+5. Acesse a porta local indicada no seu terminal.
+
 
 ## 🤝 Contribuindo
 
