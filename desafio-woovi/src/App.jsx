@@ -1,15 +1,16 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import logo from './assets/logo.svg';
-import Footer from './components/Footer';
 import selectedRadioImage from './assets/selectedRadio.svg'; // Imagem personalizada para rádio selecionado
 import defaultRadioImage from './assets/radioDefault.svg'; // Imagem personalizada para rádio não selecionado
+import security from './assets/security.svg';
+import logoFooter from './assets/logoFooter.svg';
 
 const mockData = {
   userName: 'João',
-  purchaseValue: 30500.00
+  purchaseValue: 30500.00,
+  identifier: '8G682Umy61R70bSHIb5l6l9c4VBo3Ei5'
 };
 
 function App() {
@@ -43,8 +44,9 @@ function App() {
       localStorage.setItem('totalValue', total);
       localStorage.setItem('installmentValue', installment);
       localStorage.setItem('interestRate', option.interestRate);
+      localStorage.setItem('identifier', mockData.identifier);
     }
-  }, [paymentOption]);
+  }, );
 
   const handleOptionChange = (e) => {
     setPaymentOption(e.target.value);
@@ -159,7 +161,13 @@ function App() {
             </Link>
           </div>
         </div>
-        <Footer />
+        <footer className="flex flex-col items-center mt-5 space-y-2">
+          <div className="flex items-center space-x-2">
+            <img src={security} alt="Segurança" />
+            <p className="text-xs text-gray-500">Pagamento 100% seguro via:</p>
+            <img src={logoFooter} alt="Logo Footer" />
+          </div>
+        </footer>
       </div>
     </div>
   );

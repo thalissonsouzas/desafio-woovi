@@ -5,6 +5,8 @@ import logo from '../assets/logo.svg';
 import Footer from '../components/Footer';
 import PrazoPagamento from '../components/PrazoPagamento';
 import copyImage from '../assets/copyImage.svg';
+import Timer from '../components/Timer';
+
 
 function PixPage() {
   const [showSuccessBar, setShowSuccessBar] = useState(false);
@@ -13,10 +15,6 @@ function PixPage() {
   const totalValue = localStorage.getItem('totalValue') || 'R$ 0,00';
   const installmentValue = localStorage.getItem('installmentValue') || 'R$ 0,00';
   const userName = localStorage.getItem('userName') || 'Usuário';
-  const taxaJuros = localStorage.getItem('interestRate') || '0,00';
-
-  const numberOfInstallments = parseInt(paymentOption, 10); // Número de parcelas
-  const installments = Array.from({ length: numberOfInstallments }, (_, index) => index + 1);
 
   const generateQrCode = () => {
     let qrValue = '';
@@ -37,11 +35,6 @@ function PixPage() {
       setShowSuccessBar(false);
     }, 5000);
   };
-
-  function generateRandomString(length) {
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
-  }
 
   return (
     <div className="max-w-md mx-auto p-5 border-gray-200 rounded-lg text-center font-nunito">
@@ -67,48 +60,15 @@ function PixPage() {
           <img src={copyImage} alt="Copy" className="ml-2" />
         </button>
         <PrazoPagamento />
+        <Timer />
       </div>
-      <section>
-        {paymentOption === '1x' ? ( 
-          <p>Pagamento via Pix</p>
-        ) : (
-          <ul className="list-disc list-inside">
-            {installments.map((installmentNumber) => (
-              <li key={installmentNumber} className="flex justify-between text-gray-500 text-sm font-semibold">
-                <p>
-                  {installmentNumber === 1
-                    ? '1ª entrada no Pix'
-                    : `${installmentNumber}ª parcela no cartão`}
-                </p>
-                <p className="font-bold text-gray-700">{installmentValue}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="flex justify-between w-full font-semibold text-center font-nunito">
-          <div>CET {taxaJuros * 100}%</div>
-          <p className="font-bold text-gray-700">Total: {totalValue}</p>
-        </div>
-      </section>
-
-      <p className="p-0 w-full font-semibold text-left font-nunito my-3">Como funciona?</p>
-
-      <p className="text-base leading-[21.82px] font-semibold text-center font-nunito text-softgray">Identificador:</p>
-      <code className="text-base leading-[21.82px] font-semibold text-center font-nunito text-gray-700">{generateRandomString(32)}</code>
-
+      <Footer />
       {showSuccessBar && (
         <div className="fixed bottom-0 left-0 right-0 bg-green-500 text-white text-center p-3 animate-slide-up">
           QR Code copiado para a área de transferência!
         </div>
       )}
 
-      {/* <PixApproved 
-        isVisible={showSuccessBar} 
-        onClose={() => setShowSuccessBar(false)} 
-        onAfterClose={() => setShowSuccessBar(false)} // Chama o redirecionamento
-      /> */}
-
-      <Footer />
     </div>
   );
 }
