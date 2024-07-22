@@ -52,6 +52,7 @@ O projeto é composto pelas seguintes páginas e componentes:
 
     ```sh
     cd desafio-woovi
+    cd pix-payment
     ```
 
 3. Instale as dependências:
