@@ -62,7 +62,10 @@ function App() {
             <div className="flex items-center font-bold text-base sm:text-lg relative">
               <span className="absolute bg-gray-200 text-gray-700 py-1 px-2 rounded-full text-xs sm:text-sm ml-2">Pix</span>
             </div>
-            <label className="flex items-center p-2 sm:p-3 border border-gray-200 rounded-lg mb-2 cursor-pointer hover:border-emerald-400 transition duration-300">
+            <label className={`flex items-center p-2 sm:p-3 border rounded-lg mb-2 cursor-pointer transition duration-300 
+              ${paymentOption === '1x' ? 'border-emerald-500' : 'border-gray-200'}
+              hover:border-emerald-400
+            `}>
               <div className="flex flex-col">
                 {`1x ${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
                 <span className="text-emerald-400">Ganhe <span className="font-extrabold">3%</span> de Cashback</span>
@@ -86,7 +89,7 @@ function App() {
               />
             </label>
           </div>
-          <div className="border border-gray-200 rounded-lg">
+          <div className="">
             <div className="flex items-center font-bold text-base sm:text-lg relative">
               <span className="absolute bg-gray-200 text-gray-700 py-1 px-2 rounded-full text-xs sm:text-sm ml-2">Pix Parcelado</span>
             </div>
