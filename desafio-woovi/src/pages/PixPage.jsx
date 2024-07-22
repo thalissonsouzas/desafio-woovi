@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import QRCode from 'qrcode.react'; // Biblioteca para gerar QR Code
 import logo from '../assets/logo.svg';
 import Footer from '../components/Footer';
@@ -91,5 +92,10 @@ function PixPage() {
     </div>
   );
 }
+
+PixPage.propTypes = {
+  userName: PropTypes.string,
+  purchaseValue: PropTypes.number,
+};
 
 export default PixPage;

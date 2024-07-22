@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PixApproved = ({ isVisible, onClose, onAfterClose }) => {
   const navigate = useNavigate();
@@ -28,6 +29,13 @@ const PixApproved = ({ isVisible, onClose, onAfterClose }) => {
       </div>
     </div>
   );
+};
+
+
+PixApproved.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onAfterClose: PropTypes.func,
 };
 
 export default PixApproved;
