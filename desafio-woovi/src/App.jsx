@@ -51,7 +51,7 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center items-center p-0">
+    <div className="flex justify-center items-center p-0 font-nunito">
       <div className="border-gray-200 text-center p-0 bg-white max-w-screen-sm w-full">
         <img src={logo} alt="Logo" className="mx-auto mb-4" />
         <h1 className="text-lg sm:text-xl font-extrabold text-gray-700">
@@ -66,8 +66,15 @@ function App() {
               ${paymentOption === '1x' ? 'border-emerald-500' : 'border-gray-200'}
               hover:border-emerald-400
             `}>
-              <div className="flex flex-col">
-                {`1x ${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+              <div className="flex flex-col text-gray-700">
+                <div className="flex items-center">
+                  <span className="font-bold mr-2">{/* Ajuste o margin-right conforme necessário */}
+                    1x
+                  </span>
+                  <span className='font-semibold'>
+                    {`${mockData.purchaseValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+                  </span>
+                </div>
                 <span className="text-emerald-400">Ganhe <span className="font-extrabold">3%</span> de Cashback</span>
                 <div className="relative flex items-center bg-customblue text-xs sm:text-sm md:text-base text-white w-full pl-2 pr-4 sm:pr-6 whitespace-nowrap">
                   <div className="font-semibold mr-1">🤑 R$ 300,00</div>
@@ -100,19 +107,33 @@ function App() {
                   ${paymentOption === option.label ? 'border-emerald-500' : 'border-gray-200'}
                   ${index === 0 ? 'rounded-t-lg border-b-0' : ''}
                   ${index === paymentOptions.length - 2 ? 'rounded-b-lg' : '-mb-px'}
+                  font-semibold
                 `}
               >
-                <div className='flex flex-col'>
-                  {`${option.label} ${calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).installment} `}
-                  <span className="text-gray-500 text-sm">Total {calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).total}</span>
-                  {option.label === '4x' && (
-                    <div className="relative flex items-center bg-customblue text-white w-full pl-2 pr-2 mt-2 whitespace-nowrap">
-                      <div className="font-semibold mr-1 text-xs sm:text-sm md:text-base">3% de juros:</div>
-                      <div className="text-xs sm:text-sm md:text-base">Melhor opção de parcelamento</div>
-                      {/* <div className="absolute left-full top-1/2 transform -translate-y-1/2 bg-white h-5 w-5 rotate-45"></div> */}
-                    </div>
-                  )}
+              <div className='flex flex-col text-gray-700'>
+                <div className="flex items-center mb-1">
+                  <span className="font-bold mr-2">
+                    {option.label}
+                  </span>
+                  <span>
+                    {`${calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).installment} `}
+                  </span>
                 </div>
+                <span className="text-gray-500 text-sm">
+                  Total {calculateInstallments(mockData.purchaseValue, option.installments, option.interestRate).total}
+                </span>
+                {option.label === '4x' && (
+                  <div className="relative flex items-center bg-customblue text-white w-full pl-2 pr-2 mt-2 whitespace-nowrap">
+                    <div className="font-semibold mr-1 text-xs sm:text-sm md:text-base">
+                      3% de juros:
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base">
+                      Melhor opção de parcelamento
+                    </div>
+                    {/* <div className="absolute left-full top-1/2 transform -translate-y-1/2 bg-white h-5 w-5 rotate-45"></div> */}
+                  </div>
+                        )}
+              </div>
                 <input
                   type="radio"
                   name="paymentOption"
@@ -133,7 +154,7 @@ function App() {
           <div className="flex justify-center mt-4">
             <Link to="/pixpage">
               <button className="px-4 py-2 bg-customblue text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300">
-                Ir para a página de pagamento
+                Continuar
               </button>
             </Link>
           </div>
